@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Reflex app</title>
+    <script src="Timer.js" type="module" defer></script>
+    <script src="app.js" type="module" defer></script>
+  </head>
+  <body>
+    <form class="settingsForm">
+      <input type="number" id="singalsNumber" /><label for="singalsNumber"
+        >Number of uniq signals</label
+      >
+      <input type="number" id="roundDuration" /><label for="roundDuration"
+        >Round duration</label
+      >
+      <input type="number" id="breakDuration" /><label for="breakDuration"
+        >Break duration</label
+      >
+      <input type="number" id="roundsNumber" /><label for="roundsNumber"
+        >Number of rounds</label
+      >
+      <input type="number" id="intervalMin" /><label for="intervalMin"
+        >Minimal sound interval</label
+      >
+      <input type="number" id="intervalMax" /><label for="intervalMax"
+        >Maximal sound interval</label
+      >
+    </form>
+    <div class="timer">
+      <time>1:00</time>
+      <button>Start</button>
+      <button>Pause</button>
+      <button>Restart</button>
+    </div>
+  </body>
+</html>

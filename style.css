@@ -1,0 +1,9 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 10vw;
+}
+.timer {
+  width: 200px;
+  margin: 100px auto;
+}
