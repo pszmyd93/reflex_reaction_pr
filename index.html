@@ -11,30 +11,36 @@
   </head>
   <body>
     <form class="settingsForm">
-      <input type="number" id="singalsNumber" /><label for="singalsNumber"
+      <input type="number" id="signalsNumber" min="0" max="6" value="3" /><label
+        for="singalsNumber"
         >Number of uniq signals</label
       >
-      <input type="number" id="roundDuration" /><label for="roundDuration"
+      <input type="number" id="roundDuration" min="1" max="120" value="5" /><label
+        for="roundDuration"
         >Round duration</label
       >
-      <input type="number" id="breakDuration" /><label for="breakDuration"
+      <input type="number" id="breakDuration" min="1" max="60" value="3" /><label
+        for="breakDuration"
         >Break duration</label
       >
-      <input type="number" id="roundsNumber" /><label for="roundsNumber"
+      <input type="number" id="roundsNumber" min="1" max="12" value="2" /><label
+        for="roundsNumber"
         >Number of rounds</label
       >
-      <input type="number" id="intervalMin" /><label for="intervalMin"
+      <input type="number" id="intervalMin" min="0" max="10" value="1" /><label
+        for="intervalMin"
         >Minimal sound interval</label
       >
-      <input type="number" id="intervalMax" /><label for="intervalMax"
+      <input type="number" id="intervalMax" min="1" max="10" value="3" /><label
+        for="intervalMax"
         >Maximal sound interval</label
       >
-      <button type="submit">Zapisz</button>
+      <button type="submit" class="buttonSave">Zapisz</button>
     </form>
     <div class="timer">
-      <time class="clock">1:00</time>
+      <time class="clock"></time>
       <button class="buttonStart">Start</button>
-      <button class="buttonPause">Pause</button>
+      <button class="buttonPause" disabled="true">Pause</button>
       <button class="buttonStop">Stop</button>
     </div>
   </body>

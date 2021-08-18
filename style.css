@@ -1,7 +1,10 @@
 form {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   width: 10vw;
+}
+form input {
+  height: 20px;
 }
 .timer {
   width: 300px;
