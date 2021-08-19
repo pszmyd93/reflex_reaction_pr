@@ -7,12 +7,41 @@ form input {
   height: 20px;
 }
 .timer {
-  width: 300px;
-  margin: 100px auto;
+  position: relative;
+  width: 270px;
+  height: 100px;
+  margin: 50px auto;
 }
-.timer time {
+.timer .clock {
+  display: block;
+  width: 100%;
+  text-align: center;
   font-size: 30px;
 }
 .timer button {
-  padding: 10px;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  border-radius: 100%;
+  border: none;
+  text-transform: uppercase;
+}
+.timer .buttonStart {
+  left: 0;
+  background-color: hsl(130, 40%, 60%);
+}
+.timer .buttonStart:disabled {
+  background-color: hsl(130, 40%, 80%);
+}
+.timer .buttonPause {
+  left: 50%;
+  transform: translate(-50%);
+  background-color: hsl(56, 40%, 60%);
+}
+.timer .buttonPause:disabled {
+  background-color: hsl(56, 40%, 80%);
+}
+.timer .buttonStop {
+  right: 0;
+  background-color: hsl(0, 40%, 60%);
 }

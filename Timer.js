@@ -95,6 +95,7 @@ class Timer {
     this.toggleButtons();
   };
   playSound = () => {
+    if (this.signalsNumber == 0) return;
     const time = Math.random() * 2000;
     const soundIndex = Math.floor(Math.random() * this.signalsNumber) + 1; // file names starts from 1
     const sound = new Audio(`sounds/${soundIndex}.mp3`);
