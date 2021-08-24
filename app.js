@@ -6,8 +6,9 @@ const buttonStart = timer.querySelector(".buttonStart");
 const buttonPause = timer.querySelector(".buttonPause");
 const buttonStop = timer.querySelector(".buttonStop");
 const clock = timer.querySelector(".clock");
+const roundsLeft = timer.querySelector(".roundsLeft span");
 
-TimerLogic.displayTime(clock);
+TimerLogic.displayTime(clock, roundsLeft);
 
 form.addEventListener("submit", e => {
   e.preventDefault();
@@ -22,9 +23,9 @@ form.addEventListener("submit", e => {
     intervalMax: parseInt(form.intervalMax.value) || 3,
   };
   TimerLogic = new Timer(data);
-  TimerLogic.displayTime(clock);
+  TimerLogic.displayTime(clock, roundsLeft);
   TimerLogic.toggleButtons();
 });
-buttonStart.addEventListener("click", e => TimerLogic.startTimer(e, clock));
+buttonStart.addEventListener("click", e => TimerLogic.startTimer(e, clock, roundsLeft));
 buttonPause.addEventListener("click", e => TimerLogic.pauseTimer(e));
-buttonStop.addEventListener("click", e => TimerLogic.stopTimer(e, clock));
+buttonStop.addEventListener("click", e => TimerLogic.stopTimer(e, clock, roundsLeft));

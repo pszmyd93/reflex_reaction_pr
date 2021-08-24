@@ -18,6 +18,9 @@ form input {
   text-align: center;
   font-size: 30px;
 }
+.timer .roundsLeft {
+  text-align: center;
+}
 .timer button {
   width: 80px;
   height: 80px;

@@ -46,38 +46,51 @@ class Timer {
       buttonPause.disabled = true;
     }
   };
-  startTimer = (e, clock) => {
+  startTimer = (e, clock, roundsLeft) => {
+    let countingStep = 0.01;
     if (this.interval) return; // if timer is running return
     this.currentTime.isRunning = true;
     this.playSound();
     this.toggleButtons();
     this.setDataIfFormNotSaved();
     this.interval = setInterval(() => {
-      if (this.currentTime.roundSecondsLeft == 1) {
+      if (this.currentTime.roundSecondsLeft <= countingStep) {
         //round ends, 0 not displayed
         if (this.currentTime.roundsLeft > 0) {
           if (this.currentTime.roundsLeft == 1 && this.currentTime.pause == false) {
             this.currentTime.pause = false; //reset pause to be false when starts again
-            this.stopTimer(e, clock);
+            this.stopTimer(e, clock, roundsLeft);
             return;
           } else {
             this.currentTime.pause = !this.currentTime.pause;
           }
         }
         if (this.currentTime.pause == true) {
-          this.currentTime.roundSecondsLeft = this.breakDuration + 1; // +1 because decrements before display
+          this.currentTime.roundSecondsLeft = this.breakDuration + countingStep; // +1 because decrements before display
           this.currentTime.roundsLeft = this.currentTime.roundsLeft - 1;
         } else {
-          this.currentTime.roundSecondsLeft = this.roundDuration + 1;
+          this.currentTime.roundSecondsLeft = this.roundDuration + countingStep;
         }
       }
 
-      this.currentTime.roundSecondsLeft = this.currentTime.roundSecondsLeft - 1;
-      this.displayTime(clock);
-    }, 1000);
+      this.currentTime.roundSecondsLeft =
+        this.currentTime.roundSecondsLeft - countingStep;
+      this.displayTime(clock, roundsLeft);
+    }, 10);
   };
-  displayTime = clock => {
-    clock.textContent = this.currentTime.roundSecondsLeft;
+  displayTime = (clock, roundsLeft) => {
+    const seconds = Math.floor(this.currentTime.roundSecondsLeft % 60);
+    const seconds10 = Math.floor(seconds / 10);
+    const seconds1 = seconds % 10;
+    const fraction = Math.floor((this.currentTime.roundSecondsLeft * 100) % 100);
+    const fraction10 = Math.floor(fraction / 10);
+    const fraction1 = fraction % 10;
+    const minutes = Math.floor(this.currentTime.roundSecondsLeft / 60);
+    const minutes10 = Math.floor(minutes / 10);
+    const minutes1 = minutes % 10;
+    const time = `${minutes10}${minutes1}:${seconds10}${seconds1}:${fraction10}${fraction1}`;
+    clock.textContent = time;
+    roundsLeft.textContent = this.currentTime.roundsLeft;
   };
   pauseTimer = () => {
     this.currentTime.isRunning = false;
@@ -85,11 +98,11 @@ class Timer {
     this.interval = 0;
     this.toggleButtons();
   };
-  stopTimer = (e, clock) => {
+  stopTimer = (e, clock, roundsLeft) => {
     this.currentTime.isRunning = false;
     this.currentTime.roundSecondsLeft = this.roundDuration;
     this.currentTime.roundsLeft = this.roundsNumber;
-    this.displayTime(clock);
+    this.displayTime(clock, roundsLeft);
     clearInterval(this.interval);
     this.interval = 0;
     this.toggleButtons();
