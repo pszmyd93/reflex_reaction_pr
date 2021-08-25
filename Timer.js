@@ -1,12 +1,5 @@
 class Timer {
-  constructor({
-    roundDuration = 5,
-    breakDuration = 3,
-    roundsNumber = 2,
-    intervalMin = 1,
-    intervalMax = 3,
-    signalsNumber = 3,
-  }) {
+  constructor({ roundDuration = 5, breakDuration = 3, roundsNumber = 2, intervalMin = 1, intervalMax = 3, signalsNumber = 3 }) {
     this.roundDuration = roundDuration;
     this.breakDuration = breakDuration;
     this.roundsNumber = roundsNumber;
@@ -73,8 +66,7 @@ class Timer {
         }
       }
 
-      this.currentTime.roundSecondsLeft =
-        this.currentTime.roundSecondsLeft - countingStep;
+      this.currentTime.roundSecondsLeft = this.currentTime.roundSecondsLeft - countingStep;
       this.displayTime(clock, roundsLeft);
     }, 10);
   };
@@ -108,14 +100,14 @@ class Timer {
     this.toggleButtons();
   };
   playSound = () => {
-    if (this.signalsNumber == 0) return;
-    const time = Math.random() * 2000;
+    if (this.signalsNumber == 0) return; // option with no signals
+    const time = this.intervalMin * 1000 + (this.intervalMax - this.intervalMin) * 1000 * Math.random();
     const soundIndex = Math.floor(Math.random() * this.signalsNumber) + 1; // file names starts from 1
     const sound = new Audio(`sounds/${soundIndex}.mp3`);
-    console.log(`sounds/${soundIndex}.mp3`);
+    console.log(time);
     if (this.currentTime.isRunning == false) return;
     if (this.currentTime.pause == false) {
-      // sound.play();
+      sound.play();
     }
     setTimeout(() => {
       this.playSound();

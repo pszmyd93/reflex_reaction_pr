@@ -11,34 +11,16 @@
   </head>
   <body>
     <form class="settingsForm">
-      <input type="number" id="signalsNumber" min="0" max="6" value="3" /><label
-        for="singalsNumber"
-        >Number of uniq signals</label
-      >
-      <input type="number" id="roundDuration" min="1" max="5400" value="5" /><label
-        for="roundDuration"
-        >Round duration</label
-      >
-      <input type="number" id="breakDuration" min="1" max="60" value="3" /><label
-        for="breakDuration"
-        >Break duration</label
-      >
-      <input type="number" id="roundsNumber" min="1" max="12" value="2" /><label
-        for="roundsNumber"
-        >Number of rounds</label
-      >
-      <input type="number" id="intervalMin" min="0" max="10" value="1" /><label
-        for="intervalMin"
-        >Minimal sound interval</label
-      >
-      <input type="number" id="intervalMax" min="1" max="10" value="3" /><label
-        for="intervalMax"
-        >Maximal sound interval</label
-      >
-      <button type="submit" class="buttonSave">Zapisz</button>
+      <input type="number" id="roundDuration" min="1" max="5400" value="5" /><label for="roundDuration">Round duration (seconds)</label>
+      <input type="number" id="breakDuration" min="1" max="60" value="3" /><label for="breakDuration">Break duration (s)</label>
+      <input type="number" id="roundsNumber" min="1" max="12" value="2" /><label for="roundsNumber">Number of rounds</label>
+      <input type="number" id="signalsNumber" min="0" max="6" value="3" /><label for="singalsNumber">Number of signals</label>
+      <input type="number" id="intervalMin" min="0" max="10" value="1" /><label for="intervalMin">Minimal sound interval (s)</label>
+      <input type="number" id="intervalMax" min="1" max="10" value="3" /><label for="intervalMax">Maximal sound interval (s)</label>
+      <button type="submit" class="buttonSave">Save</button>
     </form>
     <div class="timer">
-      <p class="roundsLeft">Pozostałe rundy: <span>2</span></p>
+      <p class="roundsLeft">Rounds left: <span>2</span></p>
       <time class="clock"></time>
       <button class="buttonStart">Start</button>
       <button class="buttonPause" disabled="true">Pause</button>
